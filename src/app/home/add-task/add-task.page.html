@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>
+      {{ headerTitle }}
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ headerTitle }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <form [formGroup]="taskFormGroup">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Create a Task</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input formControlName="name"></ion-input>
+        </ion-item>
+        <ion-text color="danger" class="ion-margin" *ngIf="!getTaskFormGroup().name.valid && getTaskFormGroup().name.touched">Please enter a valid name</ion-text>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea formControlName="description"></ion-textarea>
+        </ion-item>
+        <ion-text color="danger" class="ion-margin" *ngIf="!getTaskFormGroup().description.valid && getTaskFormGroup().description.touched">Please enter a valid description</ion-text>
+        <ion-button color="primary" class="ion-margin-top" (click)="handleAddTask()">
+          <ion-icon slot="start" name="add"></ion-icon>
+          Add Task
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+  },
+  {
+    path: 'add-task',
+    loadChildren: () => import('./add-task/add-task.module').then( m => m.AddTaskPageModule)
   }
 ];
 
